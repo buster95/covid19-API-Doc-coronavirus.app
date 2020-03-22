@@ -2,214 +2,157 @@
 
 API Service for tracking the COVID-19
 
-> Based on [coronavirus.app](https://coronavirus.app)
-
-## Try it
-[![Run on Ainize](https://ainize.ai/static/images/run_on_ainize_button.svg)](https://ainize.web.app/redirect?git_repo=github.com/Laeyoung/Wuhan-Coronavirus-API)
+> All endpoints are from [coronavirus.app](https://coronavirus.app)
 
 ## API Document
 
-### Endpoints
-**Root**
+### **Root**
 > https://coronavirus.app/
 
 
-**Gets Checkpoints Count by Date:**
+### **Endpoints**
+
+
+> **Checkpoint Count by Day**
+
+Request
 ```json
 GET /get-checkpoints
 ```
-
-
-https://coronavirus.app/get-places
-
-https://coronavirus.app/get-history?id=vkkXVaqUswO5JsMZx0mX
-
-### Brief
-
-
-**Successful Response:**
+Successful Response:
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-	"confirmed": 7783,
-	"deaths": 170,
-	"recovered": 133
+    "data": [
+        {
+            "id": "20200322",
+            "createdAt": "2020-03-22T18:42:46.284Z",
+            "infected": 330355,
+            "dead": 14446,
+            "recovered": 95236,
+            "hide": false,
+            "sick": 220673
+        },
+        {
+            "hide": false,
+            "infected": 305404,
+            "recovered": 93138,
+            "sick": 199263,
+            "dead": 13003,
+            "id": "20200321",
+            "createdAt": "2020-03-21T23:55:06.119Z"
+        },
+        {
+            "hide": false,
+            "infected": 273014,
+            "recovered": 89211,
+            "sick": 172453,
+            "dead": 11350,
+            "id": "20200320",
+            "createdAt": "2020-03-20T23:55:08.486Z"
+        }
+    ]
 }
 ```
 
-**Curl:**
-```sh
-curl -X GET "https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/brief" -H "accept: application/json"
-```
 
-**Browser:**
-https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/brief
+> **Places Count by Country**
 
-### Latest
-
-**Request:**
+Request
 ```json
-GET /jhu-edu/latest
+GET /get-places
 ```
-
-Options
-- Filter by country's iso2 or iso3 code
-```json
-GET /jhu-edu/latest?iso2=US
-```
-- Make the sum of all the cities or the states in those countries
-```json
-GET /jhu-edu/latest?onlyCountries=true
-```
-You can uses both options together.
-
-**Successful Response:**
+Successful Response:
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-[
-  {
-    "provincestate": "Anhui",
-    "countryregion": "Mainland China",
-    "lastupdate": "2020-02-29T07:21:21.001Z",
-    "confirmed": 990,
-    "deaths": 6,
-    "recovered": 821,
-    "location": {
-      "lat": 31.8257,
-      "lng": 117.2264
-    },
-    "countrycode": {
-      "iso2": "CN",
-      "iso3": "CHN"
-    }
-  }, {
-    "provincestate": "Beijing",
-    "countryregion": "Mainland China",
-    "lastupdate": "2020-02-29T07:21:21.001Z",
-    "confirmed": 410,
-    "deaths": 7,
-    "recovered": 257,
-    "location": {
-      "lat": 40.1824,
-      "lng": 116.4142
-    },
-    "countrycode": {
-      "iso2": "CN",
-      "iso3": "CHN"
-    }
-  }, ...
-]
+{
+    "data": [
+        {
+            "dead": 0,
+            "lastUpdated": "2020-03-22T18:28:04.447Z",
+            "id": "9Y5wmCqNCC6ZrenM31uA",
+            "infected": 2,
+            "recovered": 0,
+            "latitude": 12.136389,
+            "longitude": -86.251389,
+            "name": "Nicaragua",
+            "country": "NI",
+            "sick": 2
+        },
+        {
+            "infected": 2,
+            "recovered": 0,
+            "latitude": 20.9517,
+            "longitude": 85.0985,
+            "name": "Odisha",
+            "country": "IN",
+            "dead": 0,
+            "lastUpdated": "2020-03-22T18:26:02.786Z",
+            "id": "0VG7S6aaK4eSo59fL9JO",
+            "sick": 2
+        }
+    ]
+}
 ```
 
-**Curl:**
-```sh
-curl -X GET "https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest" -H "accept: application/json"
-```
 
-**Browser:**
-- https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest
-- https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/latest?iso2=US&onlyCountries=true
+> **History Count by Country and Day**
 
-
-### Timeseries
-
-**Request:**
+Request
 ```json
-GET /jhu-edu/timeseries
+GET /get-history?id=[country_id]
+GET /get-history?id=9Y5wmCqNCC6ZrenM31uA
 ```
-
-Options
-- Filter by country's iso2 or iso3 code
-```json
-GET /jhu-edu/timeseries?iso2=US
-```
-- Make the sum of all the cities or the states in those countries
-```json
-GET /jhu-edu/timeseries?onlyCountries=true
-```
-You can uses both options together.
-
-**Successful Response:**
+Successful Response:
 ```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 
-[
-  {
-    "provincestate": "Anhui",
-    "countryregion": "Mainland China",
-    "lastupdate": "2020-02-29T08:15:03.208Z",
-    "location": {
-      "lat": 31.8257,
-      "lng": 117.2264
-    },
-    "countrycode": {
-      "iso2": "CN",
-      "iso3": "CHN"
-    },
-    "timeseries": {
-      "1/22/20": {
-        "confirmed": 1,
-        "deaths": 0,
-        "recovered": 0
-      },
-      "1/23/20": {
-        "confirmed": 9,
-        "deaths": 0,
-        "recovered": 0
-      }, ...
+{
+    "data": {
+        "id": "9Y5wmCqNCC6ZrenM31uA",
+        "history": [
+            {
+                "day": "20200322",
+                "infected": 2,
+                "dead": 0,
+                "recovered": 0,
+                "sick": 2
+            },
+            {
+                "day": "20200321",
+                "infected": 2,
+                "dead": 0,
+                "recovered": 0,
+                "sick": 2
+            },
+            {
+                "day": "20200320",
+                "infected": 2,
+                "dead": 0,
+                "recovered": 0,
+                "sick": 2
+            },
+            {
+                "day": "20200319",
+                "infected": 1,
+                "dead": 0,
+                "recovered": 0,
+                "sick": 1
+            }
+        ],
+        "latitude": 12.136389,
+        "longitude": -86.251389,
+        "country": "NI",
+        "name": "Nicaragua",
+        "lastUpdated": "2020-03-22T18:58:03.547Z"
     }
-  }, {
-    "provincestate": "Beijing",
-    "countryregion": "Mainland China",
-    "lastupdate": "2020-02-29T08:15:03.208Z",
-    "location": {
-      "lat": 40.1824,
-      "lng": 116.4142
-    },
-    "countrycode": {
-      "iso2": "CN",
-      "iso3": "CHN"
-    },    
-    "timeseries": {
-      "1/22/20": {
-        "confirmed": 14,
-        "deaths": 0,
-        "recovered": 0
-      },
-      "1/23/20": {
-        "confirmed": 22,
-        "deaths": 0,
-        "recovered": 0
-      }, ...
-    }
-  }, ...
-]
+}
 ```
-
-**Curl:**
-```sh
-curl -X GET "https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/timeseries" -H "accept: application/json"
-```
-
-**Browser:**
-- https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/timeseries
-- https://wuhan-coronavirus-api.laeyoung.endpoint.ainize.ai/jhu-edu/timeseries?iso2=US&onlyCountries=true
-
-### Services using COVID-19-API
-- https://corona-board.soaple.endpoint.ainize.ai/
-- https://wordpress.org/plugins/corona-virus-data/ (WordPress plugin)
-- https://corona-three.now.sh/
-
-### Original data source
-[Novel Coronavirus (COVID-19) Cases](https://github.com/CSSEGISandData/COVID-19), provided by JHU CSSE
 
 ## License
 This project is released under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE for details.
-
-## Terms of Use
-You can uses this Repo and API service freely, even commercial uses. But this term of use rely on data sources. You have to check each terms of use of data sources ([JHU CSSE](https://github.com/CSSEGISandData/COVID-19/blob/master/README.md), [livecod(kor)](https://github.com/LiveCoronaDetector/livecod/blob/master/README.md)).
