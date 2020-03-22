@@ -154,5 +154,17 @@ Content-Type: application/json
 }
 ```
 
+
+> **Get Country Flags**
+
+Request
+```json
+GET /assets/img/flags/[country].svg
+GET /assets/img/flags/NI.svg
+```
+
+Successful Response:
+[![Country Flags](https://coronavirus.app/assets/img/flags/NI.svg)](https://coronavirus.app/assets/img/flags/NI.svg)
+
 ## License
 This project is released under the [MIT License](http://opensource.org/licenses/MIT). See LICENSE for details.
