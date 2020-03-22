@@ -16,7 +16,7 @@ API Service for tracking the COVID-19
 > **Checkpoint Count by Day**
 
 Request
-<a href="https://coronavirus.app/get-checkpoints"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
+<a href="https://coronavirus.app/get-checkpoints" target="_BLANK"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
 
 ```json
 GET /get-checkpoints
@@ -63,7 +63,7 @@ Content-Type: application/json
 > **Places Count by Country**
 
 Request
-<a href="https://coronavirus.app/get-places"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
+<a href="https://coronavirus.app/get-places" target="_BLANK"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
 
 ```json
 GET /get-places
@@ -107,7 +107,7 @@ Content-Type: application/json
 > **History Count by Country and Day**
 
 Request
-<a href="https://coronavirus.app/get-history?id=9Y5wmCqNCC6ZrenM31uA"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
+<a href="https://coronavirus.app/get-history?id=9Y5wmCqNCC6ZrenM31uA" target="_BLANK"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
 
 ```json
 GET /get-history?id=[country_id]
@@ -164,7 +164,7 @@ Content-Type: application/json
 > **Get Country Flags**
 
 Request
-<a href="https://coronavirus.app/assets/img/flags/NI.svg"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
+<a href="https://coronavirus.app/assets/img/flags/NI.svg" target="_BLANK"><img src="https://www.iconfinder.com/icons/3049251/download/svg/512" style="display:inline;width:48px;margin-bottom:-20px;"/></a>
 
 ```json
 GET /assets/img/flags/[country].svg
